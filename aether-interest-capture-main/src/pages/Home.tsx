@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { SlidersHorizontal,TrendingDown, Headset, CalendarCheck, LineChart } from 'lucide-react';
+
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
@@ -17,6 +19,7 @@ const features = [
   { title: "COMO FUNCIONA O AGENDAMENTO DE CONSULTAS?", description: "O AGENTE FAZ O AGENDAMENTO BASEADO NO HORÁRIO DE ATENDIMENTO PADRÃO DO MÉDICO E DEPOIS VERIFICA A DISPONIBILIDADE NO GOOGLE AGENDA. ASSIM QUE A CONSULTA É MARCADA, ELE ENVIA UMA MENSAGEM AO MÉDICO COM AS INFORMAÇÕES SOBRE A CONSULTA E SOBRE O PACIENTE." },
   { title: "COMO FUNCIONA OS LEMBRETES DE CONSULTA?", description: "PROGRAMAMOS NOSSO SISTEMA PARA ENVIAR UMA MENSAGEM AO PACIENTE PARA LEMBRA-LO DA CONSULTA, PODENDO SER ALGUMAS HORAS OU ALGUNS DIAS ANTES." },
   { title: "COMO O AGENTE TIRA AS DÚVIDAS SOBRE AS CONSULTAS?", description: "ANTES DE INSTALAR O SISTEMA NO SEU WHATSAPP NOSSA EQUIPE TE PEDE TODAS AS INFORMAÇÕES SOBRE SUA CLÍNICA, COMO: HORÁRIOS DE ATENDIMENTO, VALORES, PROCEDIMENTOS, EXAMES, ETC. CRIAMOS UMA BASE DE DADOS E TREINAMOS NOSSO AGENTE." },
+  { title: "MEU PACIENTE QUER ATENDIMENTO HUMANO, COMO FUNCIONA ESSE DIRECIONAMENTO?", description: "TEMOS ALGUMAS SOLUÇÕES E DEIXAMOS A ESCOLHA DO MÉDICO. TEMOS A POSSIBILIDADE DO AGENTE FAZER O ENVIO DE UM NÚMERO COM ALGUMA RECOMENDAÇÃO (COMO LIGAR OU SÓ MANDAR MENSAGEM) OU APENAS ENVIAR UM REQUERIMENTO PARA UM NÚMERO DIFERENTE INDICANDO O PACIENTE QUE PRECISA DE ATENDIMENTO HUMANO." },
 ];
 
 export default function Home() {
@@ -49,7 +52,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 w-full bg-white z-20">
         <nav className="container mx-auto flex items-center justify-between p-4">
           <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-24 md:h-36 lg:h-48 w-auto transition-all duration-300" /></Link>
-          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">FALE COM UM ESPECIALISTA</Link>
+          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-red-600 font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">FALE COM UM ESPECIALISTA</Link>
         </nav>
       </header>
 
@@ -63,22 +66,20 @@ export default function Home() {
       {/* SEÇÃO COM STICKY E ALINHAMENTO */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 flex flex-col md:flex-row gap-16">
-
-          {/* COLUNA DA ESQUERDA */}
           <div className="md:w-1/2">
             {features.map((feature, index) => (
               <div
-  key={index}
-  className={`h-screen flex flex-col justify-start ${index === 0 ? 'mt-[60px]' : ''}`}
->
-
+                key={index}
+                className={`${
+                  index === 0 ? 'mt-[60px]' : ''
+                } ${index === features.length - 1 ? 'h-[40vh]' : 'h-screen'} flex flex-col justify-start`}
+              >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{feature.title}</h2>
                 <p className="text-lg md:text-xl text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          {/* COLUNA DA DIREITA */}
           <div className="md:w-1/2">
             <div className="sticky top-[180px] h-[calc(100vh-180px)] flex items-center">
               <div className="w-full">
@@ -115,9 +116,95 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
+
+      {/* FRASE CENTRAL */}
+      <section className="py-24 bg-white text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">AETHER É A SUA MELHOR ESCOLHA</h2>
+          <p className="text-lg md:text-xl text-gray-500">NÓS CUIDAMOS DE TUDO PARA VOCÊ</p>
+        </div>
+      </section>
+
+      {/* NOVA SEÇÃO COM ÍCONES */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'ALTA PERSONALIZAÇÃO DO SISTEMA' },
+              { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O CUSTO OPERACIONAL' },
+              { icon: <CalendarCheck className="w-8 h-8" />, text: 'CONVERTA MAIS AGENDAMENTOS' },
+              { icon: <LineChart className="w-8 h-8" />, text: 'AUMENTO NO COMPARECIMENTO DAS CONSULTAS' }
+            ].map(({ icon, text }, idx) => (
+              <div key={idx} className="border-2 border-black bg-white px-6 py-8 rounded-md shadow flex flex-col items-center">
+                <div className="mb-4 text-black">{icon}</div>
+                <p className="text-sm md:text-base font-semibold uppercase">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEÇÃO PERGUNTAS FREQUENTES */}
+<section className="py-20 bg-white">
+  <div className="container mx-auto px-4">
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
+    <div className="space-y-6">
+      {[
+        {
+          question: "Quantos agentes de atendimento temos funcionando simultaneamente?",
+          answer: "Nosso sistema não possui limite de atendimento. Independente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e cuidado."
+        },
+        {
+          question: "Como funciona a personalização do sistema?",
+          answer: "Nosso sistema se adapta ao seu público: com tom de voz formal ou informal e leitura de áudio para maior acessibilidade."
+        },
+        {
+          question: "Meu paciente necessita atendimento humano. É possível?",
+          answer: "Sim! Fica a seu critério: o agente pode enviar uma solicitação pelo WhatsApp do médico ou encaminhar o número do médico com orientações para o contato."
+        },
+        {
+          question: "Eu preciso configurar o agente manualmente?",
+          answer: "Não. Nós cuidamos de tudo para você."
+        },
+        {
+          question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?",
+          answer: "Recomendamos um tempo de 10 segundos para uma conversa mais natural. Mas, se preferir, esse tempo pode ser ajustado conforme sua necessidade."
+        },
+        {
+          question: "Como funciona o sistema de agendamento de consultas?",
+          answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra o horário e envia os dados pelo WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, mas podemos adicionar mais informações se necessário."
+        }
+      ].map((faq, idx) => (
+        <FaqItem key={idx} question={faq.question} answer={faq.answer} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<section className="py-20 bg-white">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600 uppercase mb-10">VALORES</h2>
+
+    <div className="w-full border-2 border-black bg-white p-10 rounded-md">
+      <div className="mb-10">
+        <p className="text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
+        <p className="text-lg md:text-xl text-black leading-relaxed">
+          ATÉ 200 CONTATOS. CASO ULTRAPASSE O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
+        </p>
+      </div>
+
+      <div>
+        <p className="text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
+        <p className="text-lg md:text-xl text-black leading-relaxed">
+          VALOR ÚNICO PROVENIENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
+          PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* RODAPÉ */}
       <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
@@ -139,5 +226,23 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
+}
+
+function FaqItem({ question, answer }: { question: string, answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="border-2 border-black bg-white rounded-md p-6 cursor-pointer transition-all"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <h3 className="text-lg md:text-xl font-bold mb-2">{question}</h3>
+      {isOpen && (
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          {answer}
+        </p>
+      )}
+    </div>
+  );
 }
