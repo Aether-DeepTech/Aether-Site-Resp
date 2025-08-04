@@ -52,7 +52,7 @@ export default function Home() {
       <header className="fixed top-0 left-0 w-full bg-white z-20">
         <nav className="container mx-auto flex items-center justify-between p-4">
           <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-24 md:h-36 lg:h-48 w-auto transition-all duration-300" /></Link>
-          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-red-600 font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">FALE COM UM ESPECIALISTA</Link>
+          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">FALE COM UM ESPECIALISTA</Link>
         </nav>
       </header>
 
@@ -72,7 +72,7 @@ export default function Home() {
                 key={index}
                 className={`${
                   index === 0 ? 'mt-[60px]' : ''
-                } ${index === features.length - 1 ? 'h-[40vh]' : 'h-screen'} flex flex-col justify-start`}
+                } ${index === features.length - 1 ? 'h-[40vh]' : 'h-[60vh]'} flex flex-col justify-start`}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{feature.title}</h2>
                 <p className="text-lg md:text-xl text-gray-600">{feature.description}</p>
@@ -185,7 +185,7 @@ export default function Home() {
 
 <section className="py-20 bg-white">
   <div className="container mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600 uppercase mb-10">VALORES</h2>
+    <h2 className="text-3xl md:text-4xl font-bold text-center text-black uppercase mb-10">VALORES</h2>
 
     <div className="w-full border-2 border-black bg-white p-10 rounded-md">
       <div className="mb-10">
