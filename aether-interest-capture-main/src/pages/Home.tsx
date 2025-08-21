@@ -5,21 +5,23 @@ import { SlidersHorizontal,TrendingDown, Headset, CalendarCheck, LineChart } fro
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
-  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. JÁ ENCONTREI SEU CADASTRO:\nNOME: JOÃO\nDATA DE NASCIMENTO: 24/01/1991\nENDEREÇO: AVENIDA DELFIM MOREIRA, LEBLON\nVAMOS PARA O SEU AGENDAMENTO! QUAL DIA E HORÁRIO SERIA IDEAL PARA SUA CONSULTA?🦷✨' },
+  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. POR FAVOR, ENVIE SEU NOME COMPLETO E DATA DE NASCIMENTO PARA QUE EU FAÇA SEU CADASTRO. ✨' },
+  { sender: 'patient', text: 'NOME: JOÃO \nDATA DE NASCIMENTO: 24/01/1991' },
+  { sender: 'bot', text: 'PERFEITO! ME FALE QUE DIA E HORÁRIO SERIA MELHOR PARA A SUA CONSULTA.😊' },
   { sender: 'patient', text: 'A DOUTORA TEM HORÁRIO DISPONÍVEL SEXTA-FEIRA 15H?' },
   { sender: 'bot', text: 'ESTÁ DISPONÍVEL SIM, QUAL SERIA O MOTIVO DA CONSULTA?😊' },
   { sender: 'patient', text: 'CONSULTA DE ROTINA.' },
-  { sender: 'bot', text: 'OK. SUA CONSULTA DE ROTINA FOI CONFIRMADA PARA SEXTA-FEIRA 15H! 🦷📅\nVOCÊ SABE CHEGAR ATÉ A NOSSA CLÍNICA? POSSO TE AJUDAR COM ISSO.' },
+  { sender: 'bot', text: 'OK. SUA CONSULTA DE ROTINA FOI CONFIRMADA PARA SEXTA-FEIRA 15H! 📅\nVOCÊ SABE CHEGAR ATÉ A NOSSA CLÍNICA? POSSO TE AJUDAR COM ISSO.' },
   { sender: 'patient', text: 'SEI SIM! MUITO OBRIGADO!' },
   { sender: 'bot', text: 'DE NADA! ATÉ LÁ!😊👋' }
 ];
 
 const features = [
-  { title: "COMO O NOSSO SISTEMA FUNCIONA?", description: "NOSSA INTELIGÊNCIA ARTIFICIAL CONVERSA COM SEUS PACIENTES DE FORMA NATURAL E EFICIENTE. ELA ENTENDE SEU PÚBLICO-ALVO E SE ADAPTA A ELE." },
-  { title: "COMO FUNCIONA O AGENDAMENTO DE CONSULTAS?", description: "O AGENTE FAZ O AGENDAMENTO BASEADO NO HORÁRIO DE ATENDIMENTO PADRÃO DO MÉDICO E DEPOIS VERIFICA A DISPONIBILIDADE NO GOOGLE AGENDA. ASSIM QUE A CONSULTA É MARCADA, ELE ENVIA UMA MENSAGEM AO MÉDICO COM AS INFORMAÇÕES SOBRE A CONSULTA E SOBRE O PACIENTE." },
-  { title: "COMO FUNCIONA OS LEMBRETES DE CONSULTA?", description: "PROGRAMAMOS NOSSO SISTEMA PARA ENVIAR UMA MENSAGEM AO PACIENTE PARA LEMBRA-LO DA CONSULTA, PODENDO SER ALGUMAS HORAS OU ALGUNS DIAS ANTES." },
-  { title: "COMO O AGENTE TIRA AS DÚVIDAS SOBRE AS CONSULTAS?", description: "ANTES DE INSTALAR O SISTEMA NO SEU WHATSAPP NOSSA EQUIPE TE PEDE TODAS AS INFORMAÇÕES SOBRE SUA CLÍNICA, COMO: HORÁRIOS DE ATENDIMENTO, VALORES, PROCEDIMENTOS, EXAMES, ETC. CRIAMOS UMA BASE DE DADOS E TREINAMOS NOSSO AGENTE." },
-  { title: "MEU PACIENTE QUER ATENDIMENTO HUMANO, COMO FUNCIONA ESSE DIRECIONAMENTO?", description: "TEMOS ALGUMAS SOLUÇÕES E DEIXAMOS A ESCOLHA DO MÉDICO. TEMOS A POSSIBILIDADE DO AGENTE FAZER O ENVIO DE UM NÚMERO COM ALGUMA RECOMENDAÇÃO (COMO LIGAR OU SÓ MANDAR MENSAGEM) OU APENAS ENVIAR UM REQUERIMENTO PARA UM NÚMERO DIFERENTE INDICANDO O PACIENTE QUE PRECISA DE ATENDIMENTO HUMANO." },
+  { title: "SISTEMA DE ATENDIMENTO", description: "NOSSA INTELIGÊNCIA ARTIFICIAL CONVERSA COM SEUS PACIENTES COM NATURALIDADE E EFICIÊNCIA. ELA ENTENDE SEU PÚBLICO-ALVO, PENSA, E SE ADAPTA A ELE." },
+  { title: "AGENDAMENTO DE CONSULTAS", description: "O AGENTE VERIFICA A DISPONIBILIDADE DOS PROFISSIONAIS NO GOOGLE AGENDA. ASSIM QUE A CONSULTA É MARCADA, ELE ENVIA UMA MENSAGEM AO MÉDICO COM AS INFORMAÇÕES SOBRE A CONSULTA E O PACIENTE." },
+  { title: "CONFIRMAÇÃO DE PRESENÇA", description: "O SISTEMA ENVIA UMA MENSAGEM AO PACIENTE LEMBRANDO-O DA CONSULTA E SOLICITANDO CONFIRMAÇÃO DE PRESENÇA. GARANTIMOS QUE O SEU TEMPO NÃO SEJA DESPERDIÇADO." },
+  { title: "RESPOSTAS ÀS DÚVIDAS DOS PACIENTES", description: "ANTES DE INSTALAR O SISTEMA NO SEU WHATSAPP, NOSSA EQUIPE FAZ UMA ANÁLISE DE TODAS AS INFORMAÇÕES SOBRE SUA CLÍNICA (HORÁRIOS DE ATENDIMENTO, VALORES, PROCEDIMENTOS, EXAMES, ETC.) E CRIA UMA BASE DE DADOS PARA TREINAR O NOSSO AGENTE. TODOS OS DADOS SÃO PROTEGIDOS DE ACORDO COM A LEI GERAL DE PROTEÇÃO DE DADOS." },
+  { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "OFERECEMOS DUAS OPÇÕES. NA PRIMEIRA, O AGENTE ENVIA UM NÚMERO DE CONTATO COM INSTRUÇÕES. NA SEGUNDA, É ENVIADA UMA SOLICITAÇÃO PARA UM NÚMERO DIFERENTE, INDICANDO QUE O PACIENTE PRECISA DE ATENDIMENTO HUMANO." },
 ];
 
 export default function Home() {
@@ -52,14 +54,14 @@ export default function Home() {
       <header className="fixed top-0 left-0 w-full bg-white z-20">
         <nav className="container mx-auto flex items-center justify-between p-4">
           <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-24 md:h-36 lg:h-48 w-auto transition-all duration-300" /></Link>
-          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">FALE COM UM ESPECIALISTA</Link>
+          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">TESTE O NOSSO SISTEMA</Link>
         </nav>
       </header>
 
       <main className="flex-grow container mx-auto px-4 pt-40 md:pt-52 lg:pt-64">
         <div className="w-full max-w-5xl text-center mx-auto">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-black">TRANSFORME O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL</h1>
-          <p className="text-gray-700 text-base md:text-xl leading-relaxed">MAIS AGENDAMENTOS, MENOS FALTAS E ATENDIMENTO 24H — TUDO PELO WHATSAPP COM NOSSO SISTEMA TREINADO ESPECIALMENTE PARA A ÁREA MÉDICA.</p>
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-black">REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL</h1>
+          <p className="text-gray-700 text-base md:text-xl leading-relaxed">MAIS AGENDAMENTOS, MENOS FALTAS E ATENDIMENTO 24H — TENHA UM ESPECIALISTA NA ÁREA MÉDICA ATENDENDO O SEU WHATSAPP A TODO MOMENTO.</p>
         </div>
       </main>
 
@@ -122,8 +124,8 @@ export default function Home() {
       {/* FRASE CENTRAL */}
       <section className="py-24 bg-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">AETHER É A SUA MELHOR ESCOLHA</h2>
-          <p className="text-lg md:text-xl text-gray-500">NÓS CUIDAMOS DE TUDO PARA VOCÊ</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">AETHER É A MELHOR ESCOLHA PARA O SEU NEGÓCIO</h2>
+          <p className="text-lg md:text-xl text-gray-500">REVOLUCIONAMOS SUA GESTÃO E A EXPERIÊNCIA DOS SEUS CLIENTES.</p>
         </div>
       </section>
 
@@ -132,8 +134,8 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'ALTA PERSONALIZAÇÃO DO SISTEMA' },
-              { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O CUSTO OPERACIONAL' },
+              { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'PERSONALIZE O SISTEMA DO SEU JEITO' },
+              { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O SEU CUSTO OPERACIONAL' },
               { icon: <CalendarCheck className="w-8 h-8" />, text: 'CONVERTA MAIS AGENDAMENTOS' },
               { icon: <LineChart className="w-8 h-8" />, text: 'AUMENTO NO COMPARECIMENTO DAS CONSULTAS' }
             ].map(({ icon, text }, idx) => (
@@ -154,27 +156,27 @@ export default function Home() {
       {[
         {
           question: "Quantos agentes de atendimento temos funcionando simultaneamente?",
-          answer: "Nosso sistema não possui limite de atendimento. Independente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e cuidado."
+          answer: "Nosso sistema não possui limite de atendimento. Independentemente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e velocidade."
         },
         {
           question: "Como funciona a personalização do sistema?",
-          answer: "Nosso sistema se adapta ao seu público: com tom de voz formal ou informal e leitura de áudio para maior acessibilidade."
+          answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fique do seu jeito."
         },
         {
-          question: "Meu paciente necessita atendimento humano. É possível?",
-          answer: "Sim! Fica a seu critério: o agente pode enviar uma solicitação pelo WhatsApp do médico ou encaminhar o número do médico com orientações para o contato."
+          question: "Meu paciente necessita de atendimento humano. O que eu faço?",
+          answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações."
         },
         {
           question: "Eu preciso configurar o agente manualmente?",
-          answer: "Não. Nós cuidamos de tudo para você."
+          answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências."
         },
         {
           question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?",
-          answer: "Recomendamos um tempo de 10 segundos para uma conversa mais natural. Mas, se preferir, esse tempo pode ser ajustado conforme sua necessidade."
+          answer: "O agente responde em 7 segundos, garantindo que o paciente se mantenha na conversa. Esse tempo pode ser ajustado conforme sua necessidade."
         },
         {
           question: "Como funciona o sistema de agendamento de consultas?",
-          answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra o horário e envia os dados pelo WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, mas podemos adicionar mais informações se necessário."
+          answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização."
         }
       ].map((faq, idx) => (
         <FaqItem key={idx} question={faq.question} answer={faq.answer} />
@@ -191,14 +193,14 @@ export default function Home() {
       <div className="mb-10">
         <p className="text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
         <p className="text-lg md:text-xl text-black leading-relaxed">
-          ATÉ 200 CONTATOS. CASO ULTRAPASSE O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
+          ATÉ 200 CONTATOS. AO ULTRAPASSAR O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
         </p>
       </div>
 
       <div>
         <p className="text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
         <p className="text-lg md:text-xl text-black leading-relaxed">
-          VALOR ÚNICO PROVENIENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
+          VALOR ÚNICO REFERENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
           PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
         </p>
       </div>
