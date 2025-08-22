@@ -1,3 +1,4 @@
+// src/components/InterestForm.tsx
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,6 +40,23 @@ const InterestForm = () => {
 
       if (response.ok) {
         toast.success('Interesse enviado com sucesso!');
+
+        const targetPhoneNumber = '5521967350948';
+        const textMessage = `
+Olá! Tenho interesse no sistema Aether.
+
+*Nome:* ${formData.nomeCompleto}
+*Especialidade:* ${formData.especialidade}
+*Telefone:* ${formData.telefone}
+*Pacientes/Mês:* ${formData.pacientesMes}
+*E-mail:* ${formData.email}
+        `;
+        
+        const encodedMessage = encodeURIComponent(textMessage.trim());
+        const whatsappUrl = `https://wa.me/${targetPhoneNumber}?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+
         setFormData({
           nomeCompleto: '',
           especialidade: '',
@@ -46,6 +64,7 @@ const InterestForm = () => {
           pacientesMes: '',
           email: ''
         });
+
       } else {
         toast.error('Erro ao enviar formulário');
       }
@@ -56,7 +75,8 @@ const InterestForm = () => {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Espaçamento entre os campos diminuído para space-y-4 */}
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <label htmlFor="nomeCompleto" className="block text-black text-sm">
             NOME COMPLETO:
@@ -127,7 +147,7 @@ const InterestForm = () => {
           />
         </div>
 
-        <div className="pt-6">
+        <div className="pt-4">
           <Button
             type="submit"
             className="w-full bg-transparent text-black border border-black hover:bg-black hover:text-white transition-colors duration-200 rounded-none"
@@ -141,5 +161,3 @@ const InterestForm = () => {
 };
 
 export default InterestForm;
-
-

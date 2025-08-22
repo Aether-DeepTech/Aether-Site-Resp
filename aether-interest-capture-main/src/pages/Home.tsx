@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
+ import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { SlidersHorizontal,TrendingDown, Headset, CalendarCheck, LineChart } from 'lucide-react';
-
+import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart } from 'lucide-react';
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
@@ -24,11 +23,29 @@ const features = [
   { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "OFERECEMOS DUAS OPÇÕES. NA PRIMEIRA, O AGENTE ENVIA UM NÚMERO DE CONTATO COM INSTRUÇÕES. NA SEGUNDA, É ENVIADA UMA SOLICITAÇÃO PARA UM NÚMERO DIFERENTE, INDICANDO QUE O PACIENTE PRECISA DE ATENDIMENTO HUMANO." },
 ];
 
+function FaqItem({ question, answer }: { question: string, answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="border-2 border-black bg-white rounded-md p-6 cursor-pointer transition-all"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <h3 className="text-lg md:text-xl font-bold mb-2">{question}</h3>
+      {isOpen && (
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          {answer}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const [messages, setMessages] = useState<typeof conversation>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
@@ -54,6 +71,11 @@ export default function Home() {
       <header className="fixed top-0 left-0 w-full bg-white z-20">
         <nav className="container mx-auto flex items-center justify-between p-4">
           <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-24 md:h-36 lg:h-48 w-auto transition-all duration-300" /></Link>
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#sistemas" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Sistemas</a>
+            <a href="#faq" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Perguntas Frequentes</a>
+            <a href="#valores" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Valores</a>
+          </div>
           <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">TESTE O NOSSO SISTEMA</Link>
         </nav>
       </header>
@@ -74,7 +96,7 @@ export default function Home() {
                 key={index}
                 className={`${
                   index === 0 ? 'mt-[60px]' : ''
-                } ${index === features.length - 1 ? 'h-[40vh]' : 'h-[60vh]'} flex flex-col justify-start`}
+                } ${index === features.length - 1 ? 'h-[28vh]' : 'h-[60vh]'} flex flex-col justify-start`}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">{feature.title}</h2>
                 <p className="text-lg md:text-xl text-gray-600">{feature.description}</p>
@@ -121,7 +143,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FRASE CENTRAL */}
       <section className="py-24 bg-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">AETHER É A MELHOR ESCOLHA PARA O SEU NEGÓCIO</h2>
@@ -129,7 +150,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NOVA SEÇÃO COM ÍCONES */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -148,67 +168,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEÇÃO PERGUNTAS FREQUENTES */}
-<section className="py-20 bg-white">
-  <div className="container mx-auto px-4">
-    <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
-    <div className="space-y-6">
-      {[
-        {
-          question: "Quantos agentes de atendimento temos funcionando simultaneamente?",
-          answer: "Nosso sistema não possui limite de atendimento. Independentemente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e velocidade."
-        },
-        {
-          question: "Como funciona a personalização do sistema?",
-          answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fique do seu jeito."
-        },
-        {
-          question: "Meu paciente necessita de atendimento humano. O que eu faço?",
-          answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações."
-        },
-        {
-          question: "Eu preciso configurar o agente manualmente?",
-          answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências."
-        },
-        {
-          question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?",
-          answer: "O agente responde em 7 segundos, garantindo que o paciente se mantenha na conversa. Esse tempo pode ser ajustado conforme sua necessidade."
-        },
-        {
-          question: "Como funciona o sistema de agendamento de consultas?",
-          answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização."
-        }
-      ].map((faq, idx) => (
-        <FaqItem key={idx} question={faq.question} answer={faq.answer} />
-      ))}
-    </div>
-  </div>
-</section>
+      <section id="faq" className="py-20 bg-white scroll-mt-40 md:scroll-mt-52 lg:scroll-mt-64">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
+          <div className="space-y-6">
+            {[
+              { question: "Quantos agentes de atendimento temos funcionando simultaneamente?", answer: "Nosso sistema não possui limite de atendimento. Independentemente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e velocidade." },
+              { question: "Como funciona a personalização do sistema?", answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fiquedo seu jeito." },
+              { question: "Meu paciente necessita de atendimento humano. O que eu faço?", answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações." },
+              { question: "Eu preciso configurar o agente manualmente?", answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências." },
+              { question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?", answer: "O agente responde em 7 segundos, garantindo que o paciente se mantenha na conversa. Esse tempo pode ser ajustado conforme sua necessidade." },
+              { question: "Como funciona o sistema de agendamento de consultas?", answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização." }
+            ].map((faq, idx) => (
+              <FaqItem key={idx} question={faq.question} answer={faq.answer} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-<section className="py-20 bg-white">
-  <div className="container mx-auto px-4">
-    <h2 className="text-3xl md:text-4xl font-bold text-center text-black uppercase mb-10">VALORES</h2>
+      <section id="valores" className="py-20 bg-white scroll-mt-40 md:scroll-mt-52 lg:scroll-mt-64">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-black uppercase mb-10">VALORES</h2>
+          <div className="w-full border-2 border-black bg-white p-10 rounded-md">
+            <div className="mb-10">
+              <p className="text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
+              <p className="text-lg md:text-xl text-black leading-relaxed">
+                ATÉ 200 CONTATOS. AO ULTRAPASSAR O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
+              </p>
+            </div>
+            <div>
+              <p className="text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
+              <p className="text-lg md:text-xl text-black leading-relaxed">
+                VALOR ÚNICO REFERENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
+                PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div className="w-full border-2 border-black bg-white p-10 rounded-md">
-      <div className="mb-10">
-        <p className="text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
-        <p className="text-lg md:text-xl text-black leading-relaxed">
-          ATÉ 200 CONTATOS. AO ULTRAPASSAR O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
-        </p>
-      </div>
-
-      <div>
-        <p className="text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
-        <p className="text-lg md:text-xl text-black leading-relaxed">
-          VALOR ÚNICO REFERENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
-          PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-      {/* RODAPÉ */}
       <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <div className="flex items-center space-x-6">
@@ -227,24 +225,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function FaqItem({ question, answer }: { question: string, answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div
-      className="border-2 border-black bg-white rounded-md p-6 cursor-pointer transition-all"
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <h3 className="text-lg md:text-xl font-bold mb-2">{question}</h3>
-      {isOpen && (
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-          {answer}
-        </p>
-      )}
     </div>
   );
 }
