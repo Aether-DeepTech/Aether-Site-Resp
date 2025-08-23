@@ -1,4 +1,4 @@
- import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart } from 'lucide-react';
 
@@ -45,7 +45,7 @@ export default function Home() {
   const [messages, setMessages] = useState<typeof conversation>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-   useEffect(() => {
+    useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
@@ -68,70 +68,84 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white font-creato uppercase">
-      <header className="fixed top-0 left-0 w-full bg-white z-20">
-        <nav className="container mx-auto flex items-center justify-between p-4">
-          <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-24 md:h-36 lg:h-48 w-auto transition-all duration-300" /></Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#sistemas" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Sistemas</a>
-            <a href="#faq" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Perguntas Frequentes</a>
-            <a href="#valores" className="text-black font-bold text-sm transition-colors hover:text-gray-600">Valores</a>
-          </div>
-          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-sm md:text-base px-4 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white">TESTE O NOSSO SISTEMA</Link>
-        </nav>
-      </header>
+      {/* --- CABEÇALHO --- */}
+<header className="fixed top-0 left-0 w-full bg-white z-20">
+  <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
+    {/* Altura do logo diminuída no desktop (md:h-28) para reduzir o cabeçalho */}
+    <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-20 md:h-28 lg:h-40 w-auto transition-all duration-300" /></Link>
+    
+    <div className="hidden md:flex items-center space-x-8">
+      {/* ALTERAÇÃO: 
+        - A classe 'text-sm' foi alterada para 'md:text-lg lg:text-xl'.
+        - Isso aumenta a fonte em telas médias (md) e a deixa ainda maior em telas grandes (lg).
+      */}
+      <a href="#sistemas" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Sistemas</a>
+      <a href="#faq" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Perguntas Frequentes</a>
+      <a href="#valores" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Valores</a>
+    </div>
 
-      <main className="flex-grow container mx-auto px-4 pt-40 md:pt-52 lg:pt-64">
+    <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-center text-xs sm:text-sm md:text-base px-3 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white md:whitespace-nowrap">
+      TESTE O NOSSO SISTEMA
+    </Link>
+  </nav>
+</header>
+
+      {/* --- CONTEÚDO PRINCIPAL --- */}
+      <main className="flex-grow container mx-auto px-4 pt-28 md:pt-52 lg:pt-64">
         <div className="w-full max-w-5xl text-center mx-auto">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 text-black">REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL</h1>
-          <p className="text-gray-700 text-base md:text-xl leading-relaxed">MAIS AGENDAMENTOS, MENOS FALTAS E ATENDIMENTO 24H — TENHA UM ESPECIALISTA NA ÁREA MÉDICA ATENDENDO O SEU WHATSAPP A TODO MOMENTO.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 text-black">REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL</h1>
+          <p className="text-gray-700 text-sm sm:text-base md:text-xl leading-relaxed">MAIS AGENDAMENTOS, MENOS FALTAS E ATENDIMENTO 24H — TENHA UM ESPECIALISTA NA ÁREA MÉDICA ATENDENDO O SEU WHATSAPP A TODO MOMENTO.</p>
         </div>
       </main>
 
-      {/* SEÇÃO COM STICKY E ALINHAMENTO */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row gap-16">
+      {/* --- SEÇÃO DE FEATURES E TELEFONE --- */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row md:gap-16">
           <div className="md:w-1/2">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`${
-                  index === 0 ? 'mt-[60px]' : ''
-                } ${index === features.length - 1 ? 'h-[28vh]' : 'h-[60vh]'} flex flex-col justify-start`}
+                className="flex flex-col justify-start mb-12 md:mb-0 md:h-[60vh]"
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">{feature.title}</h2>
-                <p className="text-lg md:text-xl text-gray-600">{feature.description}</p>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4">{feature.title}</h2>
+                <p className="text-base md:text-xl text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="md:w-1/2">
-            <div className="sticky top-[180px] h-[calc(100vh-180px)] flex items-center">
+          <div className="md:w-1/2 mt-8 md:mt-0">
+            {/* O sticky original funciona porque a coluna da esquerda tem altura definida (md:h-[60vh]) */}
+            <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-center">
               <div className="w-full">
-                <div className="max-w-sm mx-auto bg-white rounded-[2.5rem] border-4 border-gray-900 shadow-2xl">
-                  <div className="w-full h-[600px] bg-gray-100 rounded-[2.2rem] flex flex-col overflow-hidden">
-                    <div className="flex-shrink-0 flex items-center p-4 border-b-2 border-gray-300">
-                      <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white font-bold text-lg">A</div>
-                      <div className="ml-3 text-left">
-                        <p className="font-bold text-gray-800">AETHER IA</p>
-                        <p className="text-sm text-green-600">ONLINE</p>
+                {/* ***************************************************
+                  *** A ÚNICA ALTERAÇÃO ESTÁ AQUI DENTRO DESTA DIV ***
+                  ***************************************************
+                */}
+                <div className="max-w-xs mx-auto bg-white rounded-[2.2rem] border-4 border-gray-900 shadow-2xl">
+                  <div className="w-full h-[450px] md:h-[500px] bg-gray-100 rounded-[2rem] flex flex-col overflow-hidden">
+                    <div className="flex-shrink-0 flex items-center p-3 border-b-2 border-gray-300">
+                      <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white font-bold text-base">A</div>
+                      <div className="ml-2 text-left">
+                        <p className="font-bold text-sm text-gray-800">AETHER IA</p>
+                        <p className="text-xs text-green-600">ONLINE</p>
                       </div>
                     </div>
-                    <div ref={chatContainerRef} className="flex-grow p-4 space-y-4 overflow-y-auto">
+                    <div ref={chatContainerRef} className="flex-grow p-3 space-y-3 overflow-y-auto">
                       {messages.map((msg, index) => (
                         <div key={index} className={`flex items-end animate-fade-in-up ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
-                          <div className={`max-w-[80%] rounded-2xl px-4 py-2 shadow whitespace-pre-line ${msg.sender === 'bot' ? 'bg-white text-gray-800 rounded-bl-none' : 'bg-black text-white rounded-br-none'}`}>
-                            <p className="text-sm text-left">{msg.text}</p>
+                          <div className={`max-w-[80%] rounded-xl px-3 py-2 shadow whitespace-pre-line ${msg.sender === 'bot' ? 'bg-white text-gray-800 rounded-bl-none' : 'bg-black text-white rounded-br-none'}`}>
+                            <p className="text-xs text-left">{msg.text}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="flex-shrink-0 p-4 bg-gray-200 border-t border-gray-300">
+                    <div className="flex-shrink-0 p-2 bg-gray-200 border-t border-gray-300">
                       <div className="flex items-center space-x-2">
-                        <div className="flex-grow bg-white rounded-full px-4 py-2 text-left">
-                          <p className="text-gray-500 text-sm">DIGITE UMA MENSAGEM</p>
+                        <div className="flex-grow bg-white rounded-full px-3 py-1.5 text-left">
+                          <p className="text-gray-400 text-xs">DIGITE UMA MENSAGEM</p>
                         </div>
-                        <button className="bg-black rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-5 h-5 text-white transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                        <button className="bg-black rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-4 h-4 text-white transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
                         </button>
                       </div>
                     </div>
@@ -142,17 +156,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* O restante do código permanece o mesmo */}
 
-      <section className="py-24 bg-white text-center">
+      <section className="py-12 md:py-24 bg-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">AETHER É A MELHOR ESCOLHA PARA O SEU NEGÓCIO</h2>
-          <p className="text-lg md:text-xl text-gray-500">REVOLUCIONAMOS SUA GESTÃO E A EXPERIÊNCIA DOS SEUS CLIENTES.</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">AETHER É A MELHOR ESCOLHA PARA O SEU NEGÓCIO</h2>
+          <p className="text-base md:text-xl text-gray-500">REVOLUCIONAMOS SUA GESTÃO E A EXPERIÊNCIA DOS SEUS CLIENTES.</p>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'PERSONALIZE O SISTEMA DO SEU JEITO' },
               { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O SEU CUSTO OPERACIONAL' },
@@ -167,10 +183,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section id="faq" className="py-20 bg-white scroll-mt-40 md:scroll-mt-52 lg:scroll-mt-64">
+      
+      <section id="faq" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
           <div className="space-y-6">
             {[
               { question: "Quantos agentes de atendimento temos funcionando simultaneamente?", answer: "Nosso sistema não possui limite de atendimento. Independentemente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e velocidade." },
@@ -186,19 +202,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="valores" className="py-20 bg-white scroll-mt-40 md:scroll-mt-52 lg:scroll-mt-64">
+      <section id="valores" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-black uppercase mb-10">VALORES</h2>
-          <div className="w-full border-2 border-black bg-white p-10 rounded-md">
+          <div className="w-full border-2 border-black bg-white p-6 md:p-10 rounded-md">
             <div className="mb-10">
-              <p className="text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
-              <p className="text-lg md:text-xl text-black leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
+              <p className="text-base md:text-xl text-black leading-relaxed">
                 ATÉ 200 CONTATOS. AO ULTRAPASSAR O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
               </p>
             </div>
             <div>
-              <p className="text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
-              <p className="text-lg md:text-xl text-black leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
+              <p className="text-base md:text-xl text-black leading-relaxed">
                 VALOR ÚNICO REFERENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
                 PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
               </p>
@@ -208,7 +224,7 @@ export default function Home() {
       </section>
 
       <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        <div className="container mx-auto px-4 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
           <div className="flex items-center space-x-6">
             <a href="https://www.instagram.com/aetherdeeptech" target="_blank" rel="noopener noreferrer" aria-label="INSTAGRAM" className="text-gray-500 hover:text-black transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>

@@ -4,33 +4,14 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
-  
-  body {
-    font-family: 'CreatoDisplay-Bold', sans-serif;
-  }
-
   @font-face {
-    font-family: 'CreatoDisplay-Bold';
-    src: url('/fonts/CreatoDisplay-Bold.otf') format('opentype');
-    font-weight: bold;
+    font-family: 'Creato Display';
     font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/CreatoDisplay-Bold.otf') format('opentype');
   }
-}
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  body {
+    font-family: 'Creato Display', sans-serif;
   }
 }

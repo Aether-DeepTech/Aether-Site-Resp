@@ -1,8 +1,8 @@
-// src/components/InterestForm.tsx
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import { Loader2 } from 'lucide-react'; // Importando um ícone de loading
 
 const InterestForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,8 @@ const InterestForm = () => {
     pacientesMes: '',
     email: ''
   });
+  // Novo estado para controlar o loading
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,11 +25,19 @@ const InterestForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
+    // Validação mais específica
     if (!formData.nomeCompleto || !formData.especialidade || !formData.telefone || !formData.pacientesMes || !formData.email) {
       toast.error('Por favor, preencha todos os campos');
       return;
     }
+    // Expressão regular simples para validar e-mail
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      toast.error('Por favor, insira um e-mail válido.');
+      return;
+    }
+    
+    setIsLoading(true); // Ativa o loading
 
     try {
       const response = await fetch('https://primary-production-9bb3.up.railway.app/webhook/formulario', {
@@ -70,15 +80,18 @@ Olá! Tenho interesse no sistema Aether.
       }
     } catch (error) {
       toast.error('Erro na conexão com o servidor');
+    } finally {
+      setIsLoading(false); // Desativa o loading, independente do resultado
     }
   };
 
   return (
     <div className="w-full max-w-md mx-auto">
-      {/* Espaçamento entre os campos diminuído para space-y-4 */}
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* NOME COMPLETO */}
         <div className="space-y-2">
-          <label htmlFor="nomeCompleto" className="block text-black text-sm">
+          {/* ALTERAÇÃO: Ajustado tamanho da fonte para melhor leitura em telas pequenas (xs) e maiores (sm) */}
+          <label htmlFor="nomeCompleto" className="block text-black text-xs sm:text-sm">
             NOME COMPLETO:
           </label>
           <Input
@@ -88,11 +101,13 @@ Olá! Tenho interesse no sistema Aether.
             value={formData.nomeCompleto}
             onChange={handleInputChange}
             className="w-full border-0 border-b border-black rounded-none bg-transparent focus:ring-0 focus:border-b-2 focus:border-black px-0"
+            disabled={isLoading} // Desabilita o campo durante o envio
           />
         </div>
 
+        {/* ESPECIALIDADE */}
         <div className="space-y-2">
-          <label htmlFor="especialidade" className="block text-black text-sm">
+          <label htmlFor="especialidade" className="block text-black text-xs sm:text-sm">
             ESPECIALIDADE MÉDICA (NUTRIÇÃO E ODONTOLÓGICA INCLUSAS):
           </label>
           <Input
@@ -102,11 +117,13 @@ Olá! Tenho interesse no sistema Aether.
             value={formData.especialidade}
             onChange={handleInputChange}
             className="w-full border-0 border-b border-black rounded-none bg-transparent focus:ring-0 focus:border-b-2 focus:border-black px-0"
+            disabled={isLoading}
           />
         </div>
 
+        {/* TELEFONE */}
         <div className="space-y-2">
-          <label htmlFor="telefone" className="block text-black text-sm">
+          <label htmlFor="telefone" className="block text-black text-xs sm:text-sm">
             TELEFONE (COM DDD):
           </label>
           <Input
@@ -116,11 +133,13 @@ Olá! Tenho interesse no sistema Aether.
             value={formData.telefone}
             onChange={handleInputChange}
             className="w-full border-0 border-b border-black rounded-none bg-transparent focus:ring-0 focus:border-b-2 focus:border-black px-0"
+            disabled={isLoading}
           />
         </div>
 
+        {/* PACIENTES/MÊS */}
         <div className="space-y-2">
-          <label htmlFor="pacientesMes" className="block text-black text-sm">
+          <label htmlFor="pacientesMes" className="block text-black text-xs sm:text-sm">
             QUANTOS PACIENTES ATENDE POR MÊS:
           </label>
           <Input
@@ -130,11 +149,13 @@ Olá! Tenho interesse no sistema Aether.
             value={formData.pacientesMes}
             onChange={handleInputChange}
             className="w-full border-0 border-b border-black rounded-none bg-transparent focus:ring-0 focus:border-b-2 focus:border-black px-0"
+            disabled={isLoading}
           />
         </div>
 
+        {/* E-MAIL */}
         <div className="space-y-2">
-          <label htmlFor="email" className="block text-black text-sm">
+          <label htmlFor="email" className="block text-black text-xs sm:text-sm">
             E-MAIL PARA CONTATO:
           </label>
           <Input
@@ -144,15 +165,19 @@ Olá! Tenho interesse no sistema Aether.
             value={formData.email}
             onChange={handleInputChange}
             className="w-full border-0 border-b border-black rounded-none bg-transparent focus:ring-0 focus:border-b-2 focus:border-black px-0"
+            disabled={isLoading}
           />
         </div>
 
+        {/* BOTÃO DE ENVIO */}
         <div className="pt-4">
           <Button
             type="submit"
-            className="w-full bg-transparent text-black border border-black hover:bg-black hover:text-white transition-colors duration-200 rounded-none"
+            className="w-full bg-transparent text-black border border-black hover:bg-black hover:text-white transition-colors duration-200 rounded-none flex items-center justify-center"
+            disabled={isLoading} // Desabilita o botão durante o envio
           >
-            ENVIAR
+            {/* ALTERAÇÃO: Lógica para mostrar o ícone de loading ou o texto "ENVIAR" */}
+            {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'ENVIAR'}
           </Button>
         </div>
       </form>
