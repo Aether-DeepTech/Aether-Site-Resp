@@ -22,7 +22,7 @@ const SpecialistForm = () => {
       */}
       <main className="flex-1 flex flex-col items-center justify-start pt-40 md:justify-center md:pt-0 container mx-auto px-4">
         <div className="w-full max-w-md">
-          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-left">
+          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-center md:text-left">
             PARA TESTAR O SISTEMA NO WHATSAPP, PREENCHA AS SEGUINTES INFORMAÇÕES:
           </p>
           <InterestForm />

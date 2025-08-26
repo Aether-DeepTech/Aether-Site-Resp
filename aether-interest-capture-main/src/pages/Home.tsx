@@ -115,7 +115,7 @@ export default function Home() {
 
           <div className="md:w-1/2 mt-8 md:mt-0">
             {/* O sticky original funciona porque a coluna da esquerda tem altura definida (md:h-[60vh]) */}
-            <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-center">
+            <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-start md:items-center">
               <div className="w-full">
                 {/* ***************************************************
                   *** A ÚNICA ALTERAÇÃO ESTÁ AQUI DENTRO DESTA DIV ***
