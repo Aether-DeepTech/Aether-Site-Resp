@@ -99,7 +99,7 @@ export default function Home() {
       </main>
 
       {/* --- SEÇÃO DE FEATURES E TELEFONE --- */}
-      <section className="py-12 md:py-20 bg-white">
+      <section id="sistemas" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
         <div className="container mx-auto px-4 flex flex-col md:flex-row md:gap-16">
           <div className="md:w-1/2">
             {features.map((feature, index) => (
@@ -114,13 +114,13 @@ export default function Home() {
           </div>
 
           <div className="md:w-1/2 mt-8 md:mt-0">
-            {/* O sticky original funciona porque a coluna da esquerda tem altura definida (md:h-[60vh]) */}
-            <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-start md:items-center">
+            {/* ********************************************************************************
+              *** A ALTERAÇÃO ESTÁ NA LINHA ABAIXO ***
+              *** Ajustei o 'top' para valores responsivos que acompanham a altura do header ***
+              ********************************************************************************
+            */}
+            <div className="relative md:sticky md:top-36 lg:top-48 md:h-screen flex items-start md:items-center">
               <div className="w-full">
-                {/* ***************************************************
-                  *** A ÚNICA ALTERAÇÃO ESTÁ AQUI DENTRO DESTA DIV ***
-                  ***************************************************
-                */}
                 <div className="max-w-xs mx-auto bg-white rounded-[2.2rem] border-4 border-gray-900 shadow-2xl">
                   <div className="w-full h-[450px] md:h-[500px] bg-gray-100 rounded-[2rem] flex flex-col overflow-hidden">
                     <div className="flex-shrink-0 flex items-center p-3 border-b-2 border-gray-300">
