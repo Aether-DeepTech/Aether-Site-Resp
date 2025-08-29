@@ -106,15 +106,28 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white font-creato uppercase">
       {/* --- CABEÇALHO --- */}
-      <header className="fixed top-0 left-0 w-full bg-white z-20">
+      <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-20"> {/* Adicionado fundo para dark mode */}
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
-          <Link to="/"><img src="/icone.png" alt="LOGO AETHER" className="h-20 md:h-28 lg:h-40 w-auto transition-all duration-300" /></Link>
+          <Link to="/">
+            {/* Logo para Modo Claro (padrão) */}
+            <img 
+              src="/icone_sem_fundo.png" 
+              alt="LOGO AETHER" 
+              className="h-20 md:h-28 lg:h-40 w-auto transition-all duration-300 dark:hidden" 
+            />
+            {/* Logo para Modo Escuro (só aparece no dark mode) */}
+            <img 
+              src="/icone_sem_fundo_b.png" 
+              alt="LOGO AETHER" 
+              className="hidden h-20 md:h-28 lg:h-40 w-auto transition-all duration-300 dark:block" 
+            />
+          </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#sistemas" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Sistemas</a>
-            <a href="#faq" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Perguntas Frequentes</a>
-            <a href="#valores" className="text-black font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600">Valores</a>
+            <a href="#sistemas" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Sistemas</a>
+            <a href="#faq" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Perguntas Frequentes</a>
+            <a href="#valores" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Valores</a>
           </div>
-          <Link to="/fale-com-especialista" className="border-2 border-black bg-transparent text-black font-bold text-center text-xs sm:text-sm md:text-base px-3 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white md:whitespace-nowrap">
+          <Link to="/fale-com-especialista" className="border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold text-center text-xs sm:text-sm md:text-base px-3 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black md:whitespace-nowrap">
             TESTE O NOSSO SISTEMA
           </Link>
         </nav>

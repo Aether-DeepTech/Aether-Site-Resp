@@ -10,21 +10,19 @@ const SpecialistForm = () => {
       <div className="fixed top-0 left-0 w-full z-20 pointer-events-none">
         <div className="container mx-auto p-4">
           <Link to="/" className="inline-block pointer-events-auto">
-            <img src="/icone.png" alt="LOGO AETHER" className="h-20 md:h-36 lg:h-48 w-auto" />
+            <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 md:h-36 lg:h-48 w-auto" />
           </Link>
         </div>
       </div>
       
       {/* --- CONTEÚDO PRINCIPAL --- */}
-      {/* *******************************************************************************************
-        *** A ALTERAÇÃO ESTÁ NA LINHA ABAIXO ***
-        *** O padding-top (pt) agora é responsivo para acomodar a logo em todos os tamanhos de tela ***
-        *** e o conteúdo é centralizado com 'justify-center'. ***
-        *******************************************************************************************
+      {/* ALTERAÇÃO DEFINITIVA:
+        - Mobile (padrão): Usa 'pt-40' (padding-top) para criar espaço abaixo da logo.
+        - Desktop (md:): Volta para o comportamento original de centralizar o conteúdo na tela com 'md:items-center' e 'md:pt-0' para resetar o padding.
       */}
-      <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-4 pt-32 md:pt-48 lg:pt-60">
+      <main className="flex-1 flex flex-col items-center justify-start pt-40 md:justify-center md:pt-0 container mx-auto px-4">
         <div className="w-full max-w-md">
-          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-center md:text-left">
+          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-left">
             PARA TESTAR O SISTEMA NO WHATSAPP, PREENCHA AS SEGUINTES INFORMAÇÕES:
           </p>
           <InterestForm />
