@@ -4,25 +4,40 @@ import InterestForm from '@/components/InterestForm';
 const SpecialistForm = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col font-creato uppercase">
-      {/* Container da logo. 
-        É 'fixed' para continuar no topo da tela em qualquer rolagem.
+      {/* --- CABEÇALHO PARA DESKTOP --- 
+        - É 'fixed' e permite que o conteúdo seja centralizado na tela.
+        - Aparece apenas em telas 'md' ou maiores ('hidden md:block').
       */}
-      <div className="fixed top-0 left-0 w-full z-20 pointer-events-none">
-        <div className="container mx-auto p-4">
-          <Link to="/" className="inline-block pointer-events-auto">
-            <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 md:h-36 lg:h-48 w-auto" />
-          </Link>
+      <div className="hidden md:block">
+        <div className="fixed top-0 left-0 w-full z-20 pointer-events-none">
+          <div className="container mx-auto p-4">
+            <Link to="/" className="inline-block pointer-events-auto">
+              <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 md:h-36 lg:h-48 w-auto" />
+            </Link>
+          </div>
         </div>
       </div>
-      
-      {/* --- CONTEÚDO PRINCIPAL --- */}
-      {/* ALTERAÇÃO DEFINITIVA:
-        - Mobile (padrão): Usa 'pt-40' (padding-top) para criar espaço abaixo da logo.
-        - Desktop (md:): Volta para o comportamento original de centralizar o conteúdo na tela com 'md:items-center' e 'md:pt-0' para resetar o padding.
+
+      {/* --- CABEÇALHO PARA MOBILE --- 
+        - Não é 'fixed', ele rola junto com a página, evitando sobreposição.
+        - Desaparece em telas 'md' ou maiores ('md:hidden').
       */}
-      <main className="flex-1 flex flex-col items-center justify-start pt-40 md:justify-center md:pt-0 container mx-auto px-4">
+      <header className="w-full z-20 bg-white md:hidden">
+        <div className="container mx-auto p-4">
+          <Link to="/">
+            <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 w-auto" />
+          </Link>
+        </div>
+      </header>
+      
+      {/* --- CONTEÚDO PRINCIPAL --- 
+        - 'justify-center' agora pode ser usado em todas as telas.
+        - No mobile, o novo <header> (que não é fixo) já empurra o conteúdo para baixo.
+        - No desktop, o 'justify-center' centraliza o formulário verticalmente.
+      */}
+      <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-4 pb-12 md:pb-0">
         <div className="w-full max-w-md">
-          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-left">
+          <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-center md:text-left">
             PARA TESTAR O SISTEMA NO WHATSAPP, PREENCHA AS SEGUINTES INFORMAÇÕES:
           </p>
           <InterestForm />
