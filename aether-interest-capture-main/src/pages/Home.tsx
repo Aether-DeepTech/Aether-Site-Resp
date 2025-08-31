@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart } from 'lucide-react';
+import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart, ChevronDown } from 'lucide-react'; // Importamos ChevronDown
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
@@ -20,20 +20,27 @@ const features = [
   { title: "AGENDAMENTO DE CONSULTAS", description: "O AGENTE VERIFICA A DISPONIBilidade DOS PROFISSIONAIS NO GOOGLE AGENDA. ASSIM QUE A CONSULTA É MARCADA, ELE ENVIA UMA MENSAGEM AO MÉDICO COM AS INFORMAÇÕES SOBRE A CONSULTA E O PACIENTE." },
   { title: "CONFIRMAÇÃO DE PRESENÇA", description: "O SISTEMA ENVIA UMA MENSAGEM AO PACIENTE LEMBRANDO-O DA CONSULTA E SOLICITANDO CONFIRMAÇÃO DE PRESENÇA. GARANTIMOS QUE O SEU TEMPO NÃO SEJA DESPERDIÇADO." },
   { title: "RESPOSTAS ÀS DÚVIDAS DOS PACIENTES", description: "ANTES DE INSTALAR O SISTEMA NO SEU WHATSAPP, NOSSA EQUIPE FAZ UMA ANÁLISE DE TODAS AS INFORMAÇÕES SOBRE SUA CLÍNICA (HORÁRIOS DE ATENDIMENTO, VALORES, PROCEDIMENTOS, EXAMES, ETC.) E CRIA UMA BASE DE DADOS PARA TREINAR O NOSSO AGENTE. TODOS OS DADOS SÃO PROTEGIDOS DE ACORDO COM A LEI GERAL DE PROTEÇÃO DE DADOS." },
-  { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "OFERECEMOS DUAS OPÇÕES. NA PRIMEIRA, O AGENTE ENVIA UM NÚMERO DE CONTATO COM INSTRUÇÕES. NA SEGUNDA, É ENVIADA UMA SOLICITAÇÃO PARA UM NÚMERO DIFERENTE, INDICANDO QUE O PACIENTE PRECISA DE ATENDIMENTO HUMANO." },
+  { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "OFERECEMOS DUAS OPÇÕES. NA PRIMEIRA, O AGENTE ENVIA UM NÚMERO DE CONTATO COM INSTRUÇÕES. NA SEGUNDA, É ENVIADA UMA SOLITAÇÃO PARA UM NÚMERO DIFERENTE, INDICANDO QUE O PACIENTE PRECISA DE ATENDIMENTO HUMANO." },
 ];
 
 function FaqItem({ question, answer }: { question: string, answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    // --- ALTERAÇÃO AQUI ---
+    // Adicionamos flexbox para alinhar a seta e o título, e classes de transição para a seta.
     <div
-      className="border-2 border-black bg-white rounded-md p-6 cursor-pointer transition-all"
+      className="border-2 border-black bg-white rounded-md p-4 md:p-6 cursor-pointer transition-all"
       onClick={() => setIsOpen(!isOpen)}
     >
-      <h3 className="text-lg md:text-xl font-bold mb-2">{question}</h3>
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg md:text-xl font-bold">{question}</h3>
+        <ChevronDown 
+          className={`w-6 h-6 text-black transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
+        />
+      </div>
       {isOpen && (
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-4"> {/* Adicionado mt-4 para espaçamento */}
           {answer}
         </p>
       )}
@@ -41,7 +48,6 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
   );
 }
 
-// Componente separado para o celular para evitar repetição de código
 function PhoneMockup({ messages, chatContainerRef }: { messages: typeof conversation, chatContainerRef: React.RefObject<HTMLDivElement> }) {
   return (
     <div className="max-w-xs mx-auto bg-white rounded-[2.2rem] border-4 border-gray-900 shadow-2xl">
@@ -77,7 +83,6 @@ function PhoneMockup({ messages, chatContainerRef }: { messages: typeof conversa
   );
 }
 
-
 export default function Home() {
   const [messages, setMessages] = useState<typeof conversation>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -91,31 +96,56 @@ export default function Home() {
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const startAnimation = (startIndex = 0) => {
-      if (startIndex === 0) setMessages([]);
       if (startIndex < conversation.length) {
         setMessages((prev) => [...prev, conversation[startIndex]]);
         timeoutId = setTimeout(() => startAnimation(startIndex + 1), 2500);
-      } else {
-        timeoutId = setTimeout(() => startAnimation(0), 5000);
       }
     };
+    
+    setMessages([]);
     startAnimation();
+
     return () => clearTimeout(timeoutId);
   }, []);
+
+  const handleSmoothScroll = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute('href')?.substring(1);
+    if (!targetId) return;
+
+    const targetElement = document.getElementById(targetId);
+    if (!targetElement) return;
+
+    const headerElement = document.querySelector('header');
+    const headerHeight = headerElement ? headerElement.offsetHeight : 0;
+    
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = targetPosition - headerHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white font-creato uppercase">
       {/* --- CABEÇALHO --- */}
-      <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-20"> {/* Adicionado fundo para dark mode */}
+      <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-20">
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
-          <Link to="/">
-            {/* Logo para Modo Claro (padrão) */}
+          <Link to="/" onClick={scrollToTop}>
             <img 
               src="/icone_sem_fundo.png" 
               alt="LOGO AETHER" 
               className="h-20 md:h-28 lg:h-40 w-auto transition-all duration-300 dark:hidden" 
             />
-            {/* Logo para Modo Escuro (só aparece no dark mode) */}
             <img 
               src="/icone_sem_fundo_b.png" 
               alt="LOGO AETHER" 
@@ -123,9 +153,9 @@ export default function Home() {
             />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#sistemas" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Sistemas</a>
-            <a href="#faq" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Perguntas Frequentes</a>
-            <a href="#valores" className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Valores</a>
+            <a href="#sistemas" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Sistemas</a>
+            <a href="#faq" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Perguntas Frequentes</a>
+            <a href="#valores" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Valores</a>
           </div>
           <Link to="/fale-com-especialista" className="border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold text-center text-xs sm:text-sm md:text-base px-3 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black md:whitespace-nowrap">
             TESTE O NOSSO SISTEMA
@@ -164,10 +194,6 @@ export default function Home() {
 
           {/* --- CELULAR VISÍVEL APENAS EM TELAS MÉDIAS E GRANDES (DESKTOP) --- */}
           <div className="hidden md:block md:w-1/2 mt-8 md:mt-0">
-            {/* ********************************************************************************
-              *** ALTERAÇÃO AQUI: Voltamos ao 'top-[180px]' original para o DESKTOP ***
-              ********************************************************************************
-            */}
             <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-start md:items-center">
               <div className="w-full">
                 <PhoneMockup messages={messages} chatContainerRef={chatContainerRef} />

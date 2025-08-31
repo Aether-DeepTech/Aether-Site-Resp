@@ -12,7 +12,7 @@ const SpecialistForm = () => {
         <div className="fixed top-0 left-0 w-full z-20 pointer-events-none">
           <div className="container mx-auto p-4">
             <Link to="/" className="inline-block pointer-events-auto">
-              <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 md:h-36 lg:h-48 w-auto" />
+              <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 md:h-28 lg:h-40 w-auto" />
             </Link>
           </div>
         </div>
