@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart, ChevronDown } from 'lucide-react'; // Importamos ChevronDown
+import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart, ChevronDown } from 'lucide-react';
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
@@ -27,8 +27,6 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    // --- ALTERAÇÃO AQUI ---
-    // Adicionamos flexbox para alinhar a seta e o título, e classes de transição para a seta.
     <div
       className="border-2 border-black bg-white rounded-md p-4 md:p-6 cursor-pointer transition-all"
       onClick={() => setIsOpen(!isOpen)}
@@ -40,7 +38,7 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
         />
       </div>
       {isOpen && (
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-4"> {/* Adicionado mt-4 para espaçamento */}
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-4">
           {answer}
         </p>
       )}
@@ -140,7 +138,7 @@ export default function Home() {
       {/* --- CABEÇALHO --- */}
       <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-20">
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
-          <Link to="/" onClick={scrollToTop}>
+          <Link to="/" onClick={scrollToTop} className="relative left-px">
             <img 
               src="/icone_sem_fundo.png" 
               alt="LOGO AETHER" 
