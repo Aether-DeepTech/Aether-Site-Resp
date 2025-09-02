@@ -11,13 +11,9 @@ const SpecialistForm = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-creato uppercase">
-      {/* --- CABEÇALHO --- */}
-      <header className="fixed top-0 left-0 w-full z-20">
+      {/* --- CABEÇALHO PARA DESKTOP (md e maior) --- */}
+      <header className="hidden md:block fixed top-0 left-0 w-full z-20">
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
-          {/* --- ALTERAÇÃO AQUI ---
-            - A classe "right-[3px]" move a logo 3 pixels para a esquerda.
-            - Altere o número 3 se precisar de um ajuste maior ou menor.
-          */}
           <Link to="/" onClick={scrollToTop} className="relative right-[6px]">
             <img 
               src="/icone_sem_fundo.png" 
@@ -27,10 +23,27 @@ const SpecialistForm = () => {
           </Link>
         </nav>
       </header>
+
+      {/* --- CABEÇALHO PARA MOBILE (apenas telas pequenas) --- */}
+      <header className="w-full z-20 bg-white md:hidden">
+        <div className="container mx-auto p-2">
+            <Link to="/" onClick={scrollToTop}>
+              <img src="/icone_sem_fundo.png" alt="LOGO AETHER" className="h-20 w-auto" />
+            </Link>
+        </div>
+      </header>
       
       {/* --- CONTEÚDO PRINCIPAL --- */}
-      <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-4">
-        <div className="w-full max-w-md pt-32 md:pt-0">
+      <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-4 pb-12">
+        <div className="w-full max-w-md">
+          {/* --- ALTERAÇÃO AQUI: LINHA VAZIA PARA AJUSTE MANUAL ---
+            - Este 'div' está escondido no mobile ('hidden') e visível no desktop ('md:block').
+            - A classe 'h-32' define a altura do espaçamento. 
+            - Para descer o texto: AUMENTE o número (ex: h-36, h-40).
+            - Para subir o texto: DIMINUA o número (ex: h-28, h-24).
+          */}
+          <div className="hidden md:block h-8"></div>
+
           <p className="text-black text-base md:text-xl leading-relaxed mb-8 text-left">
             PARA TESTAR O SISTEMA NO WHATSAPP, PREENCHA AS SEGUINTES INFORMAÇÕES:
           </p>
