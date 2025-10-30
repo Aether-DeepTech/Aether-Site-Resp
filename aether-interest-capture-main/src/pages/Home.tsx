@@ -256,24 +256,26 @@ export default function Home() {
       </section>
 
       <section id="sobre-nos" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-12">SOBRE NÓS</h2>
-          <div className="max-w-4xl mx-auto space-y-6 text-gray-700 text-base md:text-xl text-left leading-relaxed normal-case">
+    <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold text-black mb-12">SOBRE NÓS</h2>
+        <div className="max-w-4xl mx-auto space-y-6 text-gray-700 text-base md:text-xl text-left leading-relaxed normal-case">
             <p>
-              A Aether Inteligência Artificial nasceu da visão de acadêmicos e professores da FGV e do Ibmec, unindo excelência acadêmica e inovação tecnológica para transformar a área da saúde.
+                A Aether Inteligência Artificial nasceu da visão de acadêmicos e professores da FGV e do Ibmec, unindo excelência acadêmica e inovação tecnológica para transformar a área da saúde.
             </p>
             <p>
-              Nosso propósito é democratizar o acesso às tecnologias de Inteligência Artificial, tornando-as ferramentas acessíveis, seguras e eficazes para clínicas, consultórios e profissionais de saúde.
+                Nosso propósito é democratizar o acesso às tecnologias de Inteligência Artificial, tornando-as ferramentas acessíveis, seguras e eficazes para clínicas, consultórios e profissionais de saúde.
             </p>
             <p>
-              Acreditamos que a tecnologia deve estar a serviço das pessoas. Por isso, desenvolvemos soluções que otimizam processos, reduzem custos operacionais e melhoram a experiência do paciente, sempre com foco em eficiência, agilidade e humanização do atendimento.
+                Acreditamos que a tecnologia deve estar a serviço das pessoas. Por isso, desenvolvemos soluções que otimizam processos, reduzem custos operacionais e melhoram a experiência do paciente, como nossos sistemas de atendimento inteligente e humanizado. 
+                
+                
             </p>
             <p>
-              Combinamos ciência, ética e inovação para entregar resultados reais e impulsionar o futuro da saúde no Brasil e no mundo.
+                Além disso, criamos sistemas de informação especializados para maquinário hospitalar, aumentando a eficiência e a segurança nos cuidados de saúde. Combinamos ciência, ética e inovação para entregar resultados reais e impulsionar o futuro da saúde, com atuação em toda a América Latina.
             </p>
-          </div>
         </div>
-      </section>
+    </div>
+</section>
 
       <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
         <div className="container mx-auto px-4 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
