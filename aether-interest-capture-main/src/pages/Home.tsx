@@ -16,11 +16,11 @@ const conversation = [
 ];
 
 const features = [
-  { title: "SISTEMA DE ATENDIMENTO", description: "NOSSA INTELIGÊNCIA ARTIFICIAL CONVERSA COM SEUS PACIENTES COM NATURALIDADE E EFICIÊNCIA. ELA ENTENDE SEU PÚBLICO-ALVO, PENSA, E SE ADAPTA A ELE." },
-  { title: "AGENDAMENTO DE CONSULTAS", description: "O AGENTE VERIFICA A DISPONIBilidade DOS PROFISSIONAIS NO GOOGLE AGENDA. ASSIM QUE A CONSULTA É MARCADA, ELE ENVIA UMA MENSAGEM AO MÉDICO COM AS INFORMAÇÕES SOBRE A CONSULTA E O PACIENTE." },
-  { title: "CONFIRMAÇÃO DE PRESENÇA", description: "O SISTEMA ENVIA UMA MENSAGEM AO PACIENTE LEMBRANDO-O DA CONSULTA E SOLICITANDO CONFIRMAÇÃO DE PRESENÇA. GARANTIMOS QUE O SEU TEMPO NÃO SEJA DESPERDIÇADO." },
-  { title: "RESPOSTAS ÀS DÚVIDAS DOS PACIENTES", description: "ANTES DE INSTALAR O SISTEMA NO SEU WHATSAPP, NOSSA EQUIPE FAZ UMA ANÁLISE DE TODAS AS INFORMAÇÕES SOBRE SUA CLÍNICA (HORÁRIOS DE ATENDIMENTO, VALORES, PROCEDIMENTOS, EXAMES, ETC.) E CRIA UMA BASE DE DADOS PARA TREINAR O NOSSO AGENTE. TODOS OS DADOS SÃO PROTEGIDOS DE ACORDO COM A LEI GERAL DE PROTEÇÃO DE DADOS." },
-  { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "OFERECEMOS DUAS OPÇÕES. NA PRIMEIRA, O AGENTE ENVIA UM NÚMERO DE CONTATO COM INSTRUÇÕES. NA SEGUNDA, É ENVIADA UMA SOLITAÇÃO PARA UM NÚMERO DIFERENTE, INDICANDO QUE O PACIENTE PRECISA DE ATENDIMENTO HUMANO." },
+  { title: "SISTEMA DE ATENDIMENTO", description: "Nossa Inteligência Artificial conversa com seus pacientes com naturalidade e eficiência. Ela entende seu público-alvo, pensa, e se adapta a ele." },
+  { title: "AGENDAMENTO DE CONSULTAS", description: "O agente verifica a disponibilidade dos profissionais no Google Agenda. Assim que a consulta é marcada, ele envia uma mensagem ao médico com as informações sobre a consulta e o paciente." },
+  { title: "CONFIRMAÇÃO DE PRESENÇA", description: "O sistema envia uma mensagem ao paciente lembrando-o da consulta e solicitando confirmação de presença. Garantimos que o seu tempo não seja desperdiçado." },
+  { title: "RESPOSTAS ÀS DÚVIDAS DOS PACIENTES", description: "Antes de instalar o sistema no seu WhatsApp, nossa equipe faz uma análise de todas as informações sobre sua clínica (horários de atendimento, valores, procedimentos, exames, etc.) e cria uma base de dados para treinar o nosso agente. Todos os dados são protegidos de acordo com a Lei Geral de Proteção de Dados." },
+  { title: "INTEGRAÇÃO COM ATENDIMENTO HUMANO", description: "Oferecemos duas opções. Na primeira, o agente envia um número de contato com instruções. Na segunda, é enviada uma solicitação para um número diferente, indicando que o paciente precisa de atendimento humano." },
 ];
 
 function FaqItem({ question, answer }: { question: string, answer: string }) {
@@ -32,13 +32,13 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className="flex justify-between items-center">
-        <h3 className="text-lg md:text-xl font-bold">{question}</h3>
+        <h3 className="text-lg md:text-xl font-bold normal-case">{question}</h3>
         <ChevronDown 
           className={`w-6 h-6 text-black transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
         />
       </div>
       {isOpen && (
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-4">
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed mt-4 normal-case">
           {answer}
         </p>
       )}
@@ -61,7 +61,7 @@ function PhoneMockup({ messages, chatContainerRef }: { messages: typeof conversa
           {messages.map((msg, index) => (
             <div key={index} className={`flex items-end animate-fade-in-up ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
               <div className={`max-w-[80%] rounded-xl px-3 py-2 shadow whitespace-pre-line ${msg.sender === 'bot' ? 'bg-white text-gray-800 rounded-bl-none' : 'bg-black text-white rounded-br-none'}`}>
-                <p className="text-xs text-left">{msg.text}</p>
+                <p className="text-xs text-left normal-case">{msg.text}</p>
               </div>
             </div>
           ))}
@@ -138,7 +138,7 @@ export default function Home() {
       {/* --- CABEÇALHO --- */}
       <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-20">
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
-          <Link to="/" onClick={scrollToTop} className="relative left-px">
+          <Link to="/" onClick={scrollToTop}>
             <img 
               src="/icone_sem_fundo.png" 
               alt="LOGO AETHER" 
@@ -153,7 +153,7 @@ export default function Home() {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#sistemas" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Sistemas</a>
             <a href="#faq" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Perguntas Frequentes</a>
-            <a href="#valores" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Valores</a>
+            <a href="#sobre-nos" onClick={handleSmoothScroll} className="text-black dark:text-white font-bold text-sm md:text-lg lg:text-xl transition-colors hover:text-gray-600 dark:hover:text-gray-400">Sobre Nós</a>
           </div>
           <Link to="/fale-com-especialista" className="border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold text-center text-xs sm:text-sm md:text-base px-3 py-2 md:px-6 md:py-3 rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black md:whitespace-nowrap">
             TESTE O NOSSO SISTEMA
@@ -164,8 +164,12 @@ export default function Home() {
       {/* --- CONTEÚDO PRINCIPAL --- */}
       <main className="flex-grow container mx-auto px-4 pt-28 md:pt-52 lg:pt-64">
         <div className="w-full max-w-5xl text-center mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 text-black">REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL</h1>
-          <p className="text-gray-700 text-sm sm:text-base md:text-xl leading-relaxed">MAIS AGENDAMENTOS, MENOS FALTAS E ATENDIMENTO 24H — TENHA UM ESPECIALISTA NA ÁREA MÉDICA ATENDENDO O SEU WHATSAPP A TODO MOMENTO.</p>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 text-black">
+            REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL
+          </h1>
+          <p className="text-gray-700 text-sm sm:text-base md:text-xl leading-relaxed normal-case">
+            Transforme seu WhatsApp em um assistente virtual que agenda consultas, qualifica pacientes e integra tudo à sua agenda. Tenha um especialista em saúde trabalhando para você, 24 horas por dia, enquanto nossa equipe 100% te dá suporte 100% personalizado.
+          </p>
         </div>
       </main>
       
@@ -174,7 +178,33 @@ export default function Home() {
           <PhoneMockup messages={messages} chatContainerRef={chatContainerRef} />
       </section>
 
-
+      <section className="py-12 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {[
+              { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'PERSONALIZE O SISTEMA DO SEU JEITO' },
+              { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O SEU CUSTO OPERACIONAL' },
+              { icon: <CalendarCheck className="w-8 h-8" />, text: 'CONVERTA MENSAGENS EM CONSULTAS' },
+              { icon: <LineChart className="w-8 h-8" />, text: 'MENOS FALTAS, AGENDA CHEIA' }
+            ].map(({ icon, text }, idx) => (
+              <div key={idx} className="border-2 border-black bg-white px-6 py-8 rounded-md shadow flex flex-col items-center">
+                <div className="mb-4 text-black">{icon}</div>
+                <p className="text-sm md:text-base font-semibold uppercase">{text}</p>
+              </div>
+            ))}
+          </div>
+          {/* --- ALTERAÇÃO AQUI: Tamanho do botão e fonte restaurados --- */}
+          <div className="text-center mt-16">
+            <Link 
+              to="/fale-com-especialista" 
+              className="border-2 border-black bg-[#ff0000] text-white font-bold text-center text-sm md:text-base px-8 py-4 rounded-md transition-all duration-300 hover:bg-red-700 hover:border-black md:whitespace-nowrap"
+            >
+              TESTE GRÁTIS POR 30 DIAS
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       {/* --- SEÇÃO DE FEATURES E TELEFONE --- */}
       <section id="sistemas" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
         <div className="container mx-auto px-4 flex flex-col md:flex-row md:gap-16">
@@ -185,12 +215,11 @@ export default function Home() {
                 className="flex flex-col justify-start mb-12 md:mb-0 md:h-[60vh]"
               >
                 <h2 className="text-2xl md:text-4xl font-bold mb-4">{feature.title}</h2>
-                <p className="text-base md:text-xl text-gray-600">{feature.description}</p>
+                <p className="text-base md:text-xl text-gray-600 normal-case">{feature.description}</p>
               </div>
             ))}
           </div>
 
-          {/* --- CELULAR VISÍVEL APENAS EM TELAS MÉDIAS E GRANDES (DESKTOP) --- */}
           <div className="hidden md:block md:w-1/2 mt-8 md:mt-0">
             <div className="relative md:sticky top-[180px] md:h-[calc(100vh-180px)] flex items-start md:items-center">
               <div className="w-full">
@@ -201,38 +230,14 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="py-12 md:py-24 bg-white text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">AETHER É A MELHOR ESCOLHA PARA O SEU NEGÓCIO</h2>
-          <p className="text-base md:text-xl text-gray-500">REVOLUCIONAMOS SUA GESTÃO E A EXPERIÊNCIA DOS SEUS CLIENTES.</p>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {[
-              { icon: <SlidersHorizontal className="w-8 h-8" />, text: 'PERSONALIZE O SISTEMA DO SEU JEITO' },
-              { icon: <TrendingDown className="w-8 h-8" />, text: 'REDUZA O SEU CUSTO OPERACIONAL' },
-              { icon: <CalendarCheck className="w-8 h-8" />, text: 'CONVERTA MAIS AGENDAMENTOS' },
-              { icon: <LineChart className="w-8 h-8" />, text: 'AUMENTO NO COMPARECIMENTO DAS CONSULTAS' }
-            ].map(({ icon, text }, idx) => (
-              <div key={idx} className="border-2 border-black bg-white px-6 py-8 rounded-md shadow flex flex-col items-center">
-                <div className="mb-4 text-black">{icon}</div>
-                <p className="text-sm md:text-base font-semibold uppercase">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
       <section id="faq" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">PERGUNTAS FREQUENTES</h2>
           <div className="space-y-6">
             {[
+              { question: "Como funciona o teste grátis?", answer: "Instalamos nosso agente na sua clínica, integrando-o a sua agenda e seu Whatsapp. O sistema fica disponível gratuitamente por 30 dias, sem necessidade de registrar seu cartão de crédito." },
               { question: "Quantos agentes de atendimento temos funcionando simultaneamente?", answer: "Nosso sistema não possui limite de atendimento. Independentemente do volume de mensagens, todas são respondidas com o mesmo nível de atenção e velocidade." },
-              { question: "Como funciona a personalização do sistema?", answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fiquedo seu jeito." },
+              { question: "Como funciona a personalização do sistema?", answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fique do seu jeito." },
               { question: "Meu paciente necessita de atendimento humano. O que eu faço?", answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações." },
               { question: "Eu preciso configurar o agente manualmente?", answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências." },
               { question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?", answer: "O agente responde em 7 segundos, garantindo que o paciente se mantenha na conversa. Esse tempo pode ser ajustado conforme sua necessidade." },
@@ -241,26 +246,31 @@ export default function Home() {
               <FaqItem key={idx} question={faq.question} answer={faq.answer} />
             ))}
           </div>
+          {/* --- ALTERAÇÃO AQUI: Tamanho do botão retornado ao padrão anterior --- */}
+          <div className="text-center mt-16">
+            <Link to="/fale-com-especialista" className="border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold text-center text-sm md:text-base px-8 py-4 rounded-md transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black md:whitespace-nowrap">
+              FALE COM UM ESPECIALISTA
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section id="valores" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-black uppercase mb-10">VALORES</h2>
-          <div className="w-full border-2 border-black bg-white p-6 md:p-10 rounded-md">
-            <div className="mb-10">
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">MENSALIDADE: R$650,00</p>
-              <p className="text-base md:text-xl text-black leading-relaxed">
-                ATÉ 200 CONTATOS. AO ULTRAPASSAR O LIMITE MENSAL, TEM UM ADICIONAL DE R$20,00 A CADA 10 CONTATOS.
-              </p>
-            </div>
-            <div>
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">INSTALAÇÃO: R$1500,00</p>
-              <p className="text-base md:text-xl text-black leading-relaxed">
-                VALOR ÚNICO REFERENTE A INSTALAÇÃO, PERSONALIZAÇÃO E DESENVOLVIMENTO.<br />
-                PAGAMENTO REALIZADO EM ATÉ 3 VEZES (SEM JUROS)
-              </p>
-            </div>
+      <section id="sobre-nos" className="py-12 md:py-20 bg-white scroll-mt-28 md:scroll-mt-52 lg:scroll-mt-64">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-black mb-12">SOBRE NÓS</h2>
+          <div className="max-w-4xl mx-auto space-y-6 text-gray-700 text-base md:text-xl text-left leading-relaxed normal-case">
+            <p>
+              A Aether Inteligência Artificial nasceu da visão de acadêmicos e professores da FGV e do Ibmec, unindo excelência acadêmica e inovação tecnológica para transformar a área da saúde.
+            </p>
+            <p>
+              Nosso propósito é democratizar o acesso às tecnologias de Inteligência Artificial, tornando-as ferramentas acessíveis, seguras e eficazes para clínicas, consultórios e profissionais de saúde.
+            </p>
+            <p>
+              Acreditamos que a tecnologia deve estar a serviço das pessoas. Por isso, desenvolvemos soluções que otimizam processos, reduzem custos operacionais e melhoram a experiência do paciente, sempre com foco em eficiência, agilidade e humanização do atendimento.
+            </p>
+            <p>
+              Combinamos ciência, ética e inovação para entregar resultados reais e impulsionar o futuro da saúde no Brasil e no mundo.
+            </p>
           </div>
         </div>
       </section>
