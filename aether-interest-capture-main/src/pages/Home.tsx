@@ -266,35 +266,40 @@ export default function Home() {
                 Nosso propósito é democratizar o acesso às tecnologias de Inteligência Artificial, tornando-as ferramentas acessíveis, seguras e eficazes para clínicas, consultórios e profissionais de saúde.
             </p>
             <p>
-                Acreditamos que a tecnologia deve estar a serviço das pessoas. Por isso, desenvolvemos soluções que otimizam processos, reduzem custos operacionais e melhoram a experiência do paciente, como nossos sistemas de atendimento inteligente e humanizado. 
-                
-                
+                Acreditamos que a tecnologia deve estar a serviço das pessoas. Por isso, desenvolvemos soluções que otimizam processos, reduzem custos operacionais e melhoram a experiência do paciente, como nossos sistemas de atendimento inteligente e humanizado.   
             </p>
             <p>
-                Além disso, criamos sistemas de informação especializados para maquinário hospitalar, aumentando a eficiência e a segurança nos cuidados de saúde. Combinamos ciência, ética e inovação para entregar resultados reais e impulsionar o futuro da saúde, com atuação em toda a América Latina.
+                Com atuação em toda a américa latina, criamos sistemas de informação especializados para maquinário hospitalar, aumentando a eficiência e a segurança nos cuidados de saúde. Combinamos ciência, ética e inovação para entregar resultados reais e impulsionar a inovação de hospitais, clínicas e consultórios.
             </p>
         </div>
     </div>
 </section>
 
       <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
-        <div className="container mx-auto px-4 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
-          <div className="flex items-center space-x-6">
-            <a href="https://www.instagram.com/aetherdeeptech" target="_blank" rel="noopener noreferrer" aria-label="INSTAGRAM" className="text-gray-500 hover:text-black transition-colors">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/aether-inteligencia-artificial/" target="_blank" rel="noopener noreferrer" aria-label="LINKEDIN" className="text-gray-500 hover:text-black transition-colors">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-            </a>
-          </div>
-          <div className="text-center">
-            <a href="mailto:contato@aetherdeeptech.com" className="text-gray-500 hover:text-black transition-colors text-sm tracking-wider">CONTATO@AETHERDEEPTECH.COM</a>
-          </div>
-          <div className="text-center">
-            <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
-          </div>
-        </div>
-      </footer>
+  <div className="container mx-auto px-4 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
+    <div className="flex items-center space-x-6">
+      <a href="https://www.instagram.com/aetherdeeptech" target="_blank" rel="noopener noreferrer" aria-label="INSTAGRAM" className="text-gray-500 hover:text-black transition-colors">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/aether-inteligencia-artificial/" target="_blank" rel="noopener noreferrer" aria-label="LINKEDIN" className="text-gray-500 hover:text-black transition-colors">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+      </a>
+    </div>
+    <div className="text-center">
+      {/* Alterado de text-sm para text-xs para padronizar */}
+      <a href="mailto:contato@aetherdeeptech.com" className="text-gray-500 hover:text-black transition-colors text-xs tracking-wider">CONTATO@AETHERDEEPTECH.COM</a>
+    </div>
+    <div className="text-center">
+      <p className="text-gray-500 text-xs tracking-wider">CNPJ: 63.102.535/0001-93</p>
+    </div>
+     <div className="text-center">
+      <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
+    </div>
+    <div className="text-center">
+      <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
