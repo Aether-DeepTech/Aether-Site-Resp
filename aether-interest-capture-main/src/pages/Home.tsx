@@ -4,11 +4,11 @@ import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart, ChevronDown 
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
-  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. POR FAVOR, ENVIE SEU NOME COMPLETO E DATA DE NASCIMENTO PARA QUE EU FAÇA SEU CADASTRO. ✨' },
-  { sender: 'patient', text: 'NOME: JOÃO \nDATA DE NASCIMENTO: 24/01/1991' },
-  { sender: 'bot', text: 'PERFEITO! ME FALE QUE DIA E HORÁRIO SERIA MELHOR PARA A SUA CONSULTA.😊' },
-  { sender: 'patient', text: 'A DOUTORA TEM HORÁRIO DISPONÍVEL SEXTA-FEIRA 15H?' },
-  { sender: 'bot', text: 'ESTÁ DISPONÍVEL SIM, QUAL SERIA O MOTIVO DA CONSULTA?😊' },
+  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. POR FAVOR, ENVIE SEU NOME COMPLETO PARA QUE EU EFETUE SEU CADASTRO. ✨' },
+  { sender: 'patient', text: 'NOME: PEDRO NASCIMENTO DA SILVA.' },
+  { sender: 'bot', text: 'PERFEITO PEDRO! ME FALE QUE DIA E HORÁRIO SERIA IDEAL PARA A SUA CONSULTA.😊' },
+  { sender: 'patient', text: 'A DOUTORA TEM HORÁRIO SEXTA-FEIRA 15H?' },
+  { sender: 'bot', text: 'TEM SIM, QUAL SERIA O MOTIVO DA CONSULTA?😊' },
   { sender: 'patient', text: 'CONSULTA DE ROTINA.' },
   { sender: 'bot', text: 'OK. SUA CONSULTA DE ROTINA FOI CONFIRMADA PARA SEXTA-FEIRA 15H! 📅\nVOCÊ SABE CHEGAR ATÉ A NOSSA CLÍNICA? POSSO TE AJUDAR COM ISSO.' },
   { sender: 'patient', text: 'SEI SIM! MUITO OBRIGADO!' },
@@ -240,7 +240,7 @@ export default function Home() {
               { question: "Como funciona a personalização do sistema?", answer: "Adaptamos o sistema conforme as suas necessidades e desejos: Com tom de voz formal ou informal, mensagens mais curtas ou mais extensas e personalização na captação de informações dos pacientes, garantimos que o atendimento fique do seu jeito." },
               { question: "Meu paciente necessita de atendimento humano. O que eu faço?", answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações." },
               { question: "Eu preciso configurar o agente manualmente?", answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências." },
-              { question: "Como funciona o tempo de resposta do agente? É possível ajustar esse tempo?", answer: "O agente responde em 7 segundos, garantindo que o paciente se mantenha na conversa. Esse tempo pode ser ajustado conforme sua necessidade." },
+              { question: "Qual é o tempo de resposta do agente?", answer: "O agente responde em segundos, garantindo que o paciente se mantenha na conversa." },
               { question: "Como funciona o sistema de agendamento de consultas?", answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização." }
             ].map((faq, idx) => (
               <FaqItem key={idx} question={faq.question} answer={faq.answer} />
@@ -275,8 +275,10 @@ export default function Home() {
     </div>
 </section>
 
-      <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
-  <div className="container mx-auto px-4 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
+      {/* RODAPÉ */}
+{/* Alteração: py-8 mudou para py-4 para alinhar com a SpecialistForm */}
+<footer className="w-full bg-white py-4 mt-auto border-t border-gray-100">
+  <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <div className="flex items-center space-x-6">
       <a href="https://www.instagram.com/aetherdeeptech" target="_blank" rel="noopener noreferrer" aria-label="INSTAGRAM" className="text-gray-500 hover:text-black transition-colors">
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
@@ -286,13 +288,12 @@ export default function Home() {
       </a>
     </div>
     <div className="text-center">
-      {/* Alterado de text-sm para text-xs para padronizar */}
       <a href="mailto:contato@aetherdeeptech.com" className="text-gray-500 hover:text-black transition-colors text-xs tracking-wider">CONTATO@AETHERDEEPTECH.COM</a>
     </div>
     <div className="text-center">
       <p className="text-gray-500 text-xs tracking-wider">CNPJ: 63.102.535/0001-93</p>
     </div>
-     <div className="text-center">
+      <div className="text-center">
       <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
     </div>
     <div className="text-center">

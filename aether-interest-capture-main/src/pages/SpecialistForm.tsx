@@ -10,7 +10,8 @@ const SpecialistForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col font-creato uppercase">
+    // Div principal continua com h-screen para fixar a altura total
+    <div className="h-screen bg-white flex flex-col font-creato uppercase">
       {/* --- CABEÇALHO PARA DESKTOP (md e maior) --- */}
       <header className="hidden md:block fixed top-0 left-0 w-full z-20">
         <nav className="container mx-auto flex items-center justify-between p-2 md:py-1 md:px-4">
@@ -34,6 +35,7 @@ const SpecialistForm = () => {
       </header>
       
       {/* --- CONTEÚDO PRINCIPAL --- */}
+      {/* ALTERAÇÃO 1: Removido 'overflow-y-auto' */}
       <main className="flex-1 flex flex-col items-center justify-center container mx-auto px-4 pb-12">
         <div className="w-full max-w-md">
           {/* --- ALTERAÇÃO AQUI: LINHA VAZIA PARA AJUSTE MANUAL ---
@@ -52,7 +54,8 @@ const SpecialistForm = () => {
       </main>
 
       {/* RODAPÉ */}
-      <footer className="w-full bg-white py-8 mt-auto border-t border-gray-100">
+      {/* ALTERAÇÃO 2: Padding vertical (py-8) reduzido para (py-4) */}
+      <footer className="w-full bg-white py-4 border-t border-gray-100">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
           <div className="flex items-center space-x-6">
             <a href="https://www.instagram.com/aetherdeeptech" target="_blank" rel="noopener noreferrer" aria-label="INSTAGRAM" className="text-gray-500 hover:text-black transition-colors">
@@ -63,7 +66,13 @@ const SpecialistForm = () => {
             </a>
           </div>
           <div className="text-center">
-            <a href="mailto:contato@aetherdeeptech.com" className="text-gray-500 hover:text-black transition-colors text-sm tracking-wider">CONTATO@AETHERDEEPTECH.COM</a>
+            <a href="mailto:contato@aetherdeeptech.com" className="text-gray-500 hover:text-black transition-colors text-xs tracking-wider">CONTATO@AETHERDEEPTECH.COM</a>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-500 text-xs tracking-wider">CNPJ: 63.102.535/0001-93</p>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
           </div>
           <div className="text-center">
             <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
