@@ -4,15 +4,15 @@ import { SlidersHorizontal, TrendingDown, CalendarCheck, LineChart, ChevronDown 
 
 const conversation = [
   { sender: 'patient', text: 'OLÁ, GOSTARIA DE AGENDAR UMA CONSULTA COM A DRA. ANA.' },
-  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. POR FAVOR, ENVIE SEU NOME COMPLETO PARA QUE EU EFETUE SEU CADASTRO. ✨' },
+  { sender: 'bot', text: 'OLÁ! 😊 SOU A ASSISTENTE VIRTUAL DA DRA. ANA. POR FAVOR, ENVIE SEU NOME COMPLETO PARA SEGUIRMOS COM O SEU ATENDIMENTO.' },
   { sender: 'patient', text: 'NOME: PEDRO NASCIMENTO DA SILVA.' },
-  { sender: 'bot', text: 'PERFEITO PEDRO! ME FALE QUE DIA E HORÁRIO SERIA IDEAL PARA A SUA CONSULTA.😊' },
+  { sender: 'bot', text: 'PERFEITO, PEDRO! QUE DIA E HORÁRIO SERIAM IDEAIS PARA A SUA CONSULTA? 😊' },
   { sender: 'patient', text: 'A DOUTORA TEM HORÁRIO SEXTA-FEIRA 15H?' },
-  { sender: 'bot', text: 'TEM SIM, QUAL SERIA O MOTIVO DA CONSULTA?😊' },
+  { sender: 'bot', text: 'TEM SIM, QUAL SERIA O MOTIVO DA CONSULTA? 😊' },
   { sender: 'patient', text: 'CONSULTA DE ROTINA.' },
   { sender: 'bot', text: 'OK. SUA CONSULTA DE ROTINA FOI CONFIRMADA PARA SEXTA-FEIRA 15H! 📅\nVOCÊ SABE CHEGAR ATÉ A NOSSA CLÍNICA? POSSO TE AJUDAR COM ISSO.' },
   { sender: 'patient', text: 'SEI SIM! MUITO OBRIGADO!' },
-  { sender: 'bot', text: 'DE NADA! ATÉ LÁ!😊👋' }
+  { sender: 'bot', text: 'DE NADA! ATÉ LÁ! 😊👋' }
 ];
 
 const features = [
@@ -168,7 +168,7 @@ export default function Home() {
             REVOLUCIONE O ATENDIMENTO DA SUA CLÍNICA COM INTELIGÊNCIA ARTIFICIAL
           </h1>
           <p className="text-gray-700 text-sm sm:text-base md:text-xl leading-relaxed normal-case">
-            Transforme seu WhatsApp em um assistente virtual que agenda consultas, qualifica pacientes e integra tudo à sua agenda. Tenha um especialista em saúde trabalhando para você, 24 horas por dia, enquanto nossa equipe 100% te dá suporte 100% personalizado.
+            Transforme seu WhatsApp em um assistente virtual que agenda consultas, confirma com os pacientes e integra tudo à sua agenda. Tenha um especialista em atendimento trabalhando para você 24 horas por dia, enquanto nossa equipe te dá suporte 100% personalizado.
           </p>
         </div>
       </main>
