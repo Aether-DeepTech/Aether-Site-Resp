@@ -241,7 +241,8 @@ export default function Home() {
               { question: "Meu paciente necessita de atendimento humano. O que eu faço?", answer: "Direcionamos o paciente diretamente à você: Enviamos uma solicitação pelo WhatsApp do médico ou encaminhamos o seu contato com orientações." },
               { question: "Eu preciso configurar o agente manualmente?", answer: "Não. Nós cuidamos de tudo para você, basta nos passar as suas preferências." },
               { question: "Qual é o tempo de resposta do agente?", answer: "O agente responde em segundos, garantindo que o paciente se mantenha na conversa." },
-              { question: "Como funciona o sistema de agendamento de consultas?", answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização." }
+              { question: "Como funciona o sistema de agendamento de consultas?", answer: "O agente é integrado ao Google Agenda. Ao marcar uma consulta, ele registra automaticamente o horário e envia as informações para o profissional via WhatsApp ou e-mail. O padrão inclui nome, horário e motivo da consulta, contando com possibilidade de personalização." },
+              { question: "Preciso de um sistema personalizado, vocês fazem esse tipo de projeto?", answer: "Fazemos! A partir de um diagnóstico gratuito, entendemos as suas necessidades e montamos um projeto para melhor atende-las." }
             ].map((faq, idx) => (
               <FaqItem key={idx} question={faq.question} answer={faq.answer} />
             ))}
@@ -296,7 +297,7 @@ export default function Home() {
       <div className="text-center">
       <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
     </div>
-    <div className="text-center">
+    <div className_="text-center">
       <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
     </div>
   </div>

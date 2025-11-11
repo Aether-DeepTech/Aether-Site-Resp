@@ -72,7 +72,7 @@ const SpecialistForm = () => {
             <p className="text-gray-500 text-xs tracking-wider">CNPJ: 63.102.535/0001-93</p>
           </div>
           <div className="text-center">
-            <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
+            <p className="text-gray-500 text-xs tracking-wider">+55 21 97156-5719</p>
           </div>
           <div className="text-center">
             <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
