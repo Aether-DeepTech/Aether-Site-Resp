@@ -261,7 +261,7 @@ export default function Home() {
         <h2 className="text-3xl md:text-5xl font-bold text-black mb-12">SOBRE NÓS</h2>
         <div className="max-w-4xl mx-auto space-y-6 text-gray-700 text-base md:text-xl text-left leading-relaxed normal-case">
             <p>
-                A Aether Inteligência Artificial nasceu da visão de acadêmicos e professores da FGV e do Ibmec, unindo excelência acadêmica e inovação tecnológica para transformar a área da saúde.
+                A Aether Inteligência Artificial nasceu da visão de acadêmicos da FGV e do Ibmec, unindo excelência acadêmica e inovação tecnológica para transformar a área da saúde.
             </p>
             <p>
                 Nosso propósito é democratizar o acesso às tecnologias de Inteligência Artificial, tornando-as ferramentas acessíveis, seguras e eficazes para clínicas, consultórios e profissionais de saúde.
@@ -297,7 +297,7 @@ export default function Home() {
       <div className="text-center">
       <p className="text-gray-500 text-xs tracking-wider">+55 21 96735-0948</p>
     </div>
-    <div className_="text-center">
+    <div className="text-center">
       <p className="text-gray-500 text-xs tracking-wider">© 2025 AETHER INTELIGÊNCIA ARTIFICIAL. TODOS OS DIREITOS RESERVADOS.</p>
     </div>
   </div>
