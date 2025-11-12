@@ -51,7 +51,7 @@ const InterestForm = () => {
       if (response.ok) {
         toast.success('Interesse enviado com sucesso!');
 
-        const targetPhoneNumber = '5521967350948';
+        const targetPhoneNumber = '5521971565719';
         const textMessage = `
 Olá! Tenho interesse no sistema Aether.
 
