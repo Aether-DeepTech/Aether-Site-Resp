@@ -199,7 +199,7 @@ export default function Home() {
               to="/fale-com-especialista" 
               className="border-2 border-black bg-[#ff0000] text-white font-bold text-center text-sm md:text-base px-8 py-4 rounded-md transition-all duration-300 hover:bg-red-700 hover:border-black md:whitespace-nowrap"
             >
-              TESTE GRÁTIS POR 30 DIAS
+              TESTE GRÁTIS POR 15 DIAS
             </Link>
           </div>
         </div>
